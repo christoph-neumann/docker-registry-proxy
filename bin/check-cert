@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /etc/nginx/external
+openssl x509 -in cert.pem -text -noout

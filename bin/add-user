@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$1" == "" ]; then
+  echo >&2 "usage: add-user username"
+  exit 1
+fi
+
+cd /etc/nginx/external
+test -f docker-registry.htpasswd || touch docker-registry.htpasswd
+htpasswd -B docker-registry.htpasswd "$1"

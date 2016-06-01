@@ -1,0 +1,15 @@
+#!/bin/sh
+
+hostname="$1"
+if [ "$hostname" == "" ]; then
+  echo >&2 "usage gen-cert hostname"
+  exit 1
+fi
+
+echo "Generating a self-signed certificate for $hostname"
+
+cd /etc/nginx/external
+openssl req -x509 \
+ -newkey rsa:4086 -keyout key.pem -out cert.pem \
+ -days 3650 -nodes -sha256 \
+ -subj "/CN=$1"
