@@ -4,7 +4,7 @@ A simple docker registry proxy that supports *both* read-only access and
 authenticated access with basic auth.
 
 The read-only registry runs on port `443` and the authenticated read-write
-registry runs on port 5443.
+registry runs on port `5443`.
 
 ## Quick Start
 
@@ -37,14 +37,14 @@ Start the proxy:
     --link registry:registry \
     neumann/registry-proxy
 
-Push an image. Notice you have to use port 5443 for read-write access:
+Push an image. Notice you have to use port `5443` for read-write access:
 
     docker pull busybox:latest
     docker tag busybox:latest mydomain.com:5443/busybox:latest
     docker login mydomain.com:5443
     docker push mydomain.com:5443/busybox:latest
 
-Pull an image. No authentication is needed for read-only access if you use port 443.
+Pull an image. No authentication is needed for read-only access if you use port `443`.
 
     docker pull mydomain.com:443/busybox
 
